@@ -1,2 +1,2 @@
 # IBQ
-Ingeniería Bioquímica, Grado en Ingeniería Química
+ Ingeniería Bioquímica (Grado en Ingeniería Química)
