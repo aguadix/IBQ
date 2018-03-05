@@ -1,7 +1,7 @@
-clear; clc;
 // ENZ-3
 // REACTOR ENZIMÁTICO CONTINUO CON ENZIMA CONFINADA
 // Con desactivación enzimática
+clear; clc;
 
 V = 10; // L
 F = 1; // L/h

@@ -1,7 +1,7 @@
-clear; clc; s = %s;
 // FERM-3d
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Control
+clear; clc; s = %s;
 
 S0 = 5; // g/L
 D = 0.25; // h-1
