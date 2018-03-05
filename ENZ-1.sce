@@ -1,7 +1,7 @@
+clear; clc;
 // ENZ-1
 // REACTOR ENZIMÁTICO DISCONTINUO
 // Inhibición por sustrato
-clear; clc;
 
 rmax = 0.5; // mM/min
 KM = 4.5; // mM

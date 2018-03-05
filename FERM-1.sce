@@ -1,6 +1,6 @@
+clear; clc;
 // FERM-1
 // FERMENTADOR DISCONTINUO
-clear; clc;
 
 Umax = 0.3; // h-1
 KS = 0.1; // g/L

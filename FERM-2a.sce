@@ -1,7 +1,7 @@
+clear; clc;
 // FERM-2a
 // FERMENTADOR CONTINUO
 // Estado estacionario
-clear; clc;
 
 S0 = 10; // g/L
 //D = 0.1; // h-1

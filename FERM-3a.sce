@@ -1,7 +1,7 @@
+clear; clc;
 // FERM-3a
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Estados estacionarios (método. gráfico)
-clear; clc;
 
 S0 = 5; // g/L
 D = 0.25; // h-1

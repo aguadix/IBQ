@@ -1,7 +1,7 @@
+clear; clc;
 // ENZ-2
 // REACTOR ENZIMÁTICO DISCONTINUO
 // No adiabático, con desactivación enzimática
-clear; clc;
 
 RHO = 1000; // g/L 
 CP = 1; // cal/(g*K)

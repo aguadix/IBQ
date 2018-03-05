@@ -1,6 +1,6 @@
+clear; clc;
 // FERM-4
 // FERMENTADOR SEMICONTINUO CON INHIBICIÓN POR SUSTRATO
-clear; clc;
 
 F = 0.05; // L/h
 Umax = 0.8; // h-1
