@@ -1,5 +1,5 @@
 clear; clc; s = %s;
-// FERM-3d
+// FERM-3d.sce
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Control
 

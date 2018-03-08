@@ -1,5 +1,5 @@
 clear; clc;
-// ENZ-3
+// ENZ-3.sce
 // REACTOR ENZIMÁTICO CONTINUO CON ENZIMA CONFINADA
 // Con desactivación enzimática
 

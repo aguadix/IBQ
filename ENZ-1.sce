@@ -1,5 +1,5 @@
 clear; clc;
-// ENZ-1
+// ENZ-1.sce
 // REACTOR ENZIMÁTICO DISCONTINUO
 // Inhibición por sustrato
 

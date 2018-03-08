@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-3b
+// FERM-3b.sce
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Estados estacionarios
 

@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-3a
+// FERM-3a.sce
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Estados estacionarios (método. gráfico)
 

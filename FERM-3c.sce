@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-3c
+// FERM-3c.sce
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Dinámica
 

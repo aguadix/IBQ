@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-4
+// FERM-4.sce
 // FERMENTADOR SEMICONTINUO CON INHIBICIÓN POR SUSTRATO
 
 F = 0.05; // L/h

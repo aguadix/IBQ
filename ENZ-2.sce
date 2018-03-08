@@ -1,5 +1,5 @@
 clear; clc;
-// ENZ-2
+// ENZ-2.sce
 // REACTOR ENZIMÁTICO DISCONTINUO
 // No adiabático, con desactivación enzimática
 

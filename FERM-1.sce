@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-1
+// FERM-1.sce
 // FERMENTADOR DISCONTINUO
 
 Umax = 0.3; // h-1

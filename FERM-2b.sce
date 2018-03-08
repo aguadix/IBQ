@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-2b
+// FERM-2b.sce
 // FERMENTADOR CONTINUO
 // Dinámica
 

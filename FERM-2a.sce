@@ -1,5 +1,5 @@
 clear; clc;
-// FERM-2a
+// FERM-2a.sce
 // FERMENTADOR CONTINUO
 // Estado estacionario
 
