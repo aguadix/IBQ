@@ -3,19 +3,49 @@ clear; clc;
 // REACTOR ENZIMÁTICO DISCONTINUO
 // Inhibición por sustrato
 
+// SISTEMA DE ECUACIONES DIFERENCIALES
+function dxdt = f(t,x)
+    // Variables diferenciales
+    S = x(1)
+    P = x(2)
+    // Velocidad de reacción para el sustrato
+    rS = -rmax*S/(KM+S+S^2/KS)
+    // Balance de sustrato
+    // d(V*S)dt = rS*V 
+    dSdt = rS; 
+    // Balance de producto
+    // d(V*P)dt = -rS*V 
+    dPdt = -rS
+    // Derivadas
+    dxdt(1) = dSdt
+    dxdt(2) = dPdt
+endfunction
+
+// CONSTANTES
 rmax = 0.5; // mM/min
 KM = 4.5; // mM
 KS = 0.25; // mM
 Pini = 0; // mM
 
-tfin = 20; dt = 0.01; //min
-t = 0:dt:tfin;
+// CONDICIONES INICIALES
+Sini = 1; Pini = 0; // mM
+xini = [Sini;Pini];
 
-function dxdt = f(t,x)
-    r = rmax*x(1)/(KM+x(1)+x(1)^2/KS)
-    dxdt(1) = -r; 
-    dxdt(2) = r
-endfunction
+// TIEMPO
+tfin = 20; dt = 0.01; t = 0:dt:tfin; //min
+
+// RESOLVER
+x = ode(xini,0,t,f)
+S = x(1,:); Sfin = S($)
+P = x(2,:); Pfin = P($)
+
+// GRÁFICAS
+scf(1); clf(1);
+plot(t,S,t,P)
+xgrid; xtitle('ENZ-1','t','S(azul), P(verde)');
+
+
+// OPTIMIZAR Sini para MAXIMIZAR Pfin
 
 Sinitest = 0.1:0.1:5.0; // mM
 
@@ -26,9 +56,9 @@ for i = 1:length(Sinitest)
     Pfin(i) = x(2,$);
 end
 
-[Pfinmax,index] = max(Pfin)
-Siniopt = Sinitest(index)
+[Pfinmax,indexPfinmax] = max(Pfin)
+Siniopt = Sinitest(indexPfinmax)
 
-scf(1); clf(1);  
-plot(Sinitest',Pfin,'ro')
+scf(2); clf(2);  
+plot(Sinitest',Pfin,'ro',Siniopt,Pfinmax,'x')
 xgrid; xtitle('ENZ-1','Sini','Pfin')
