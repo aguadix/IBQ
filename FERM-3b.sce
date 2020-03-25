@@ -24,3 +24,5 @@ endfunction
 [xee,v,info] = fsolve(xeeguess, f)
 Xee = xee(1)
 See = xee(2)
+
+plot(Xee,See,'ro');

@@ -54,9 +54,9 @@ xfin = x(:,$);
 dxdtfin = f(tfin,xfin)
 Estacionario = abs(dxdtfin ./ xfin) < 1E-5
 
-X = x(1,:); Xfin = X($)
-S = x(2,:); Sfin = S($)
-P = x(3,:); Pfin = P($)
+X = x(1,:); Xee = X($)
+S = x(2,:); See = S($)
+P = x(3,:); Pee = P($)
 
 // GRÁFICAS
 scf(1); clf(1);

@@ -14,7 +14,7 @@ function dxdt = f(t,x)
     // d(V*S)dt = rS*V 
     dSdt = rS; 
     // Balance de producto
-    // d(V*P)dt = -rS*V 
+    // d(V*P)dt = rp*V = -rS*V 
     dPdt = -rS
     // Derivadas
     dxdt(1) = dSdt
