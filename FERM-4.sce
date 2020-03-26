@@ -89,6 +89,6 @@ end
 [VXfinmax,indexVXfinmax] = max(VXfin)
 S0opt = S0test(indexVXfinmax)
 
-scf(5); clf(5);  
+scf(4); clf(4);  
 plot(S0test,VXfin,'ro',S0opt,VXfinmax,'x')
 xgrid; xtitle('FERM-04','S0','VXfin')
