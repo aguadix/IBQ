@@ -55,12 +55,40 @@ a = gca(); a.data_bounds = [Xmin Xmax Smin Smax];
 //a.tight_limits = 'on';
 
 // ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
+
+// Sistema no lineal
+// dxdt = f(x)
+// dCAdt = f1(X,S)
+// dTdt  = f2(X,S)
+
+// Linealización alrededor del estado estacionario
+//  f1(Xee,See) = 0
+//  f2(Xee,See) = 0 
+
+// Desarrollo en serie de Taylor
+//  dXdt = f1(Xee,See) + df1dXee*(X-Xee) + df1dSee*(S-See)
+//  dSdt = f2(Xee,See) + df2dXee*(S-See) + df2dSee*(S-See)
+
+// Variables de desviación
+// Xd = X - Xee  => dXddt = dXdt
+// Sd = S - See  => dSddt = dSdt
+
+// Sistema lineal
+// dXddt = df1dXee*Xd + df1dSee*Sd
+// dXddt = df2dXee*Xd + df2dSee*Sd
+// dxddt = A*xd
+
+// Jacobiano
+// A = [df1dCAee  df1dTee
+//      df2dCAee  df2dTee] 
+
 // A = numderivative(f,xee)  // Jacobiano
 h = 1E-6;
 dfdXee = (f([Xee+h;See]) - f([Xee;See]))/h
 dfdSee = (f([Xee;See+h]) - f([Xee;See]))/h
 
 A = [dfdXee dfdSee]
+
 
 lambda = spec(A)  // Valores propios
 Estable = real(lambda) < 0
