@@ -10,11 +10,11 @@ function dxdt = f(t,x)
     E = x(2)
     T = x(3)
     // Constante de velocidad
-    k = exp(25 - 7600/T)
+    k2 = exp(25 - 7600/T)
     // Velocidad de reacción para el sustrato
-    // rS = -rmax*S/(KM+S) = -k*E*S/(KM+S) =*= -k*E*S/S
+    // rS = -rmax*S/(KM+S) = -k2*E*S/(KM+S) =*= -k2*E*S/S
     // * KM << S 
-    rs = -k*E
+    rs = -k2*E
     // Balance de sustrato
     // d(V*S)dt = rS*V
     dSdt = rs

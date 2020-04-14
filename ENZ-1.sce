@@ -9,7 +9,7 @@ function dxdt = f(t,x)
     S = x(1)
     P = x(2)
     // Velocidad de reacción para el sustrato
-    rS = -rmax*S/(KM+S+S^2/KS)
+    rS = -rmax*S/(KM+S+S^2/KI)
     // Balance de sustrato
     // d(V*S)dt = rS*V 
     dSdt = rS; 
@@ -24,15 +24,14 @@ endfunction
 // CONSTANTES
 rmax = 0.5; // mM/min
 KM = 4.5; // mM
-KS = 0.25; // mM
-Pini = 0; // mM
+KI = 0.25; // mM
 
 // CONDICIONES INICIALES
 Sini = 1; Pini = 0; // mM
 xini = [Sini;Pini];
 
 // TIEMPO
-tfin = 20; dt = 0.01; t = 0:dt:tfin; //min
+tfin = 20; dt = 0.01; t = 0:dt:tfin; // min
 
 // RESOLVER
 x = ode(xini,0,t,f)
