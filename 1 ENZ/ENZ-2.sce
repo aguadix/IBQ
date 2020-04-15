@@ -2,6 +2,7 @@ clear; clc;
 // ENZ-2.sce
 // REACTOR ENZIMÁTICO DISCONTINUO
 // No adiabático, con desactivación enzimática
+// https://youtu.be/RvEby-16eeA
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

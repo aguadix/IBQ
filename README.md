@@ -11,3 +11,6 @@ Código en [Scilab](http://www.scilab.org)
 2. FERM: Fermentadores
 
 Carpeta de archivos en [Google Drive](https://goo.gl/o6fNNs)
+
+
+Lista de reproducción en [YouTube](https://www.youtube.com/playlist?list=PLh3F9fU7h8w0_ngOpskMufXvjPmKLDbUx)  
