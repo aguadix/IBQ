@@ -34,7 +34,7 @@ xini = [Sini;Pini];
 tfin = 20; dt = 0.01; t = 0:dt:tfin; // min
 
 // RESOLVER
-x = ode(xini,0,t,f)
+x = ode(xini,0,t,f);
 S = x(1,:); Sfin = S($)
 P = x(2,:); Pfin = P($)
 
@@ -46,18 +46,18 @@ xgrid; xtitle('ENZ-1','t','S(azul), P(verde)');
 
 // OPTIMIZAR Sini para MAXIMIZAR Pfin
 
-Sinitest = 0.1:0.1:5.0; // mM
+Siniinterval = 0.1:0.1:5.0; // mM
 
-for i = 1:length(Sinitest)
-    Sini = Sinitest(i);  
+for i = 1:length(Siniinterval)
+    Sini = Siniinterval(i);  
     xini = [Sini;Pini];
     x = ode(xini,0,t,f);
     Pfin(i) = x(2,$);
 end
 
 [Pfinmax,indexPfinmax] = max(Pfin)
-Siniopt = Sinitest(indexPfinmax)
+Siniopt = Siniinterval(indexPfinmax)
 
 scf(2); clf(2);  
-plot(Sinitest',Pfin,'ro',Siniopt,Pfinmax,'x')
+plot(Siniinterval',Pfin,'ro',Siniopt,Pfinmax,'x')
 xgrid; xtitle('ENZ-1','Sini','Pfin')

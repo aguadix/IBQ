@@ -72,17 +72,17 @@ xgrid; xtitle('ENZ-1','t','T');
 
 // OPTIMIZAR TJ para MINIMIZAR Sfin
 
-TJtest = 290:360; // K
+TJinterval = 290:360; // K
 
-for i = 1:length(TJtest)
-    TJ = TJtest(i);  
+for i = 1:length(TJinterval)
+    TJ = TJinterval(i);  
     x = ode(xini,0,t,f);
     Sfin(i) = x(1,$);
 end
 
 [Sfinmin,indexSfinmin] = min(Sfin)
-TJopt = TJtest(indexSfinmin)
+TJopt = TJinterval(indexSfinmin)
 
 scf(4); clf(4);  
-plot(TJtest',Sfin,'ro',TJopt,Sfinmin,'x');
+plot(TJinterval',Sfin,'ro',TJopt,Sfinmin,'x');
 xgrid; xtitle('ENZ-02','TC','Sfin');
