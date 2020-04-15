@@ -59,5 +59,5 @@ end
 Siniopt = Siniinterval(indexPfinmax)
 
 scf(2); clf(2);  
-plot(Siniinterval',Pfin,'ro',Siniopt,Pfinmax,'x')
+plot(Siniinterval,Pfin,'ro',Siniopt,Pfinmax,'x')
 xgrid; xtitle('ENZ-1','Sini','Pfin')

@@ -39,22 +39,18 @@ kd = 0.1; // h-1
 E0 = kd*Eini*V/F  // mM
 
 // TIEMPO
-tfin = 200; dt = 0.01; t = 0:dt:tfin; // h
+tfin = 80; dt = 0.01; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);
 xfin = x(:,$);
-dxdtfin = f(tfin,xfin)
-Estacionario = abs(dxdtfin ./ xfin) < 1E-5
+dxdtfin = f(tfin,xfin);
+Estacionario = and(abs(dxdtfin ./ xfin) < 1E-5)
 
 S = x(1,:); See = S($)
 E = x(2,:); Eee = E($)
 
 // GRÁFICAS
 scf(1); clf(1);
-plot(t,S);
-xgrid; xtitle('ENZ-3','t','S');
-
-scf(2); clf(2);
-plot(t,E);
-xgrid; xtitle('ENZ-3','t','E');
+subplot(211); plot(t,S); xgrid; xtitle('ENZ-3','t','S');
+subplot(212); plot(t,E); xgrid; xtitle('ENZ-3','t','E');

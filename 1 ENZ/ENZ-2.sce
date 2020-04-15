@@ -14,10 +14,10 @@ function dxdt = f(t,x)
     // Velocidad de reacción para el sustrato
     // rS = -rmax*S/(KM+S) = -k2*E*S/(KM+S) =*= -k2*E*S/S
     // * KM << S 
-    rs = -k2*E
+    rS = -k2*E
     // Balance de sustrato
     // d(V*S)dt = rS*V
-    dSdt = rs
+    dSdt = rS
     // Constante de desactivación
     kd = exp(30 - 9300/T) + exp(110 - 36300/T)
     // Velocidad de reacción para la enzima
@@ -27,7 +27,7 @@ function dxdt = f(t,x)
     dEdt = rE
     // Balance de energía
     // d(V*RHO*CP*T)dt = U*A*(TJ-T) 
-    dTdt = UA*(TJ-T)/(RHO*V*CP)
+    dTdt = UA*(TJ-T)/(V*RHO*CP)
     // Derivadas
     dxdt(1) = dSdt
     dxdt(2) = dEdt
@@ -58,17 +58,9 @@ T = x(3,:); Tfin = T($)
 
 // GRÁFICAS
 scf(1); clf(1);
-plot(t,S)
-xgrid; xtitle('ENZ-1','t','S');
-
-scf(2); clf(2);
-plot(t,E)
-xgrid; xtitle('ENZ-1','t','E');
-
-scf(3); clf(3);
-plot(t,T)
-xgrid; xtitle('ENZ-1','t','T');
-
+subplot(311); plot(t,S); xgrid; xtitle('ENZ-2','t','S');
+subplot(312); plot(t,E); xgrid; xtitle('ENZ-2','t','E');
+subplot(313); plot(t,T); xgrid; xtitle('ENZ-2','t','T');
 
 // OPTIMIZAR TJ para MINIMIZAR Sfin
 
@@ -83,6 +75,6 @@ end
 [Sfinmin,indexSfinmin] = min(Sfin)
 TJopt = TJinterval(indexSfinmin)
 
-scf(4); clf(4);  
-plot(TJinterval',Sfin,'ro',TJopt,Sfinmin,'x');
-xgrid; xtitle('ENZ-02','TC','Sfin');
+scf(2); clf(2);  
+plot(TJinterval,Sfin,'ro',TJopt,Sfinmin,'x');
+xgrid; xtitle('ENZ-2','TC','Sfin');
