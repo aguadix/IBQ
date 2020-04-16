@@ -2,7 +2,8 @@ clear; clc;
 // ENZ-1.sce
 // REACTOR ENZIMÁTICO DISCONTINUO
 // Inhibición por sustrato
-// https://youtu.be/YE1FlNLRlr8
+// https://youtu.be/oa6vfF2ZptY
+
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)

@@ -2,6 +2,7 @@ clear; clc;
 // ENZ-3.sce
 // REACTOR ENZIMÁTICO CONTINUO DE MEMBRANA
 // Con desactivación enzimática
+// https://youtu.be/YE1FlNLRlr8
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
