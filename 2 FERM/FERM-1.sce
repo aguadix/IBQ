@@ -1,6 +1,7 @@
 clear; clc;
 // FERM-1.sce
 // FERMENTADOR DISCONTINUO
+// Dinámica
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -78,9 +79,9 @@ indexdXdtobj = find(dXdt>dXdtobj,1);
 tdXdtobj = t(indexdXdtobj)
 XdXdtobj = X(indexdXdtobj)
 plot(tdXdtobj,XdXdtobj,'o');
-// Recta tangente a X en dXdtobj
+// Recta tangente a X en (tdXdtobj,XdXdtobj)
 // y = y0 + m*(x-x0)
 plot(t,XdXdtobj + dXdtobj*(t-tdXdtobj),'--');
 
 a1 = gca;
-a1.data_bounds = [0,0 ; tfin,Sini];
+a1.data_bounds = [0,0;tfin,max([X,S,P])];

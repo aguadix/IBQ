@@ -5,7 +5,7 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
-    // Variables diferenciales
+    // Variables 
     X = x(1)
     S = x(2)
     P = x(3)

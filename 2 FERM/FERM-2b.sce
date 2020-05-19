@@ -5,7 +5,7 @@ clear; clc;
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
-    // Variables diferenciales
+    // Variables 
     X = x(1)
     S = x(2)
     P = x(3)
