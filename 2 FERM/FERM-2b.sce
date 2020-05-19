@@ -22,7 +22,7 @@ function dxdt = f(t,x)
     // d(V*S)dt = F*S0 - F*S + rS*V
     dSdt = D*(S0-S) + rS
     // Velocidad de reacción para el producto
-    rP = (a*mu+b)*X
+    rP = (alpha*mu+beta)*X
     // Balance de producto
     // d(V*P)dt = -F*P + rP*V
     dPdt = -D*P + rP
@@ -34,19 +34,19 @@ endfunction
 
 // CONSTANTES
 S0 = 10; // g/L
-D = 0.1 // h-1
+D = 0.255; // h-1
 mumax = 0.3; // h-1
 KS = 0.1; // g/L
 Y = 0.8; // ad
-a = 0.08; // ad
-b = 0.03; // h-1
+alpha = 0.08; // ad
+beta = 0.03; // h-1
 
 // CONDICIONES INICIALES
-Xini = 1; Sini = 10; Pini = 0; // g/L
+Xini = 0.01; Sini = 10; Pini = 0; // g/L
 xini = [Xini;Sini;Pini];
 
 // TIEMPO
-tfin = 100; dt= 0.1; t = 0:dt:tfin; // h
+tfin = 250; dt= 0.1; t = 0:dt:tfin; // h
 
 // RESOLVER
 x = ode(xini,0,t,f);

@@ -22,7 +22,7 @@ function dxdt = f(x)
     // d(V*S)dt = F*S0 - F*S + rS*V
     dSdt = D*(S0-S) + rS
     // Velocidad de reacción para el producto
-    rP = (a*mu+b)*X
+    rP = (alpha*mu+beta)*X
     // Balance de producto
     // d(V*P)dt = -F*P + rP*V
     dPdt = -D*P + rP
@@ -34,58 +34,50 @@ endfunction
 
 // CONSTANTES
 S0 = 10; // g/L
-D = 0.1 // h-1
 mumax = 0.3; // h-1
 KS = 0.1; // g/L
 Y = 0.8; // ad
-a = 0.08; // ad
-b = 0.03; // h-1
+alpha = 0.08; // ad
+beta = 0.03; // h-1
 
 // SOLUCIÓN SUPUESTA
-Xeeguess = 1; Seeguess = 0; Peeguess = 1; // g/L
-//Xeeguess = 0; Seeguess = 10; Peeguess = 0; // g/L
+Xeeguess = 1; Seeguess = 0.01; Peeguess = 1; // g/L
 xeeguess = [Xeeguess; Seeguess; Peeguess];
-
-// RESOLVER
-xee = fsolve(xeeguess, f);
-Xee = xee(1)
-See = xee(2)
-Pee = xee(3)
-Prod = D*Pee
-
 
 // OPTIMIZAR D para MAXIMIZAR PROD
 
-Dtest = 0.1:0.001:0.5; // h-1
-for i = 1:length(Dtest)
-    D = Dtest(i);  
+Dinterval = 0.1:0.001:0.5; // h-1
+for i = 1:length(Dinterval)
+    // CONSTANTES
+    D = Dinterval(i);  
+    // RESOLVER
     xee = fsolve(xeeguess, f);
     Xee(i) = xee(1);
     See(i) = xee(2);
     Pee(i) = xee(3);
 end
 
-Prod = Dtest'.*Pee;
+Prod = Dinterval'.*Pee;
 [Prodmax,indexProdmax] = max(Prod)
-Dopt = Dtest(indexProdmax)
+Dopt = Dinterval(indexProdmax)
 XeeProdmax = Xee(indexProdmax)
 SeeProdmax = See(indexProdmax)
 PeeProdmax = Pee(indexProdmax)
 
 scf(1); clf(1);  
 
-subplot(221); 
-plot(Dtest,Xee,'ro',Dopt,XeeProdmax,'x');
-xgrid; xtitle('FERM-2a','D','Xee');
+subplot(411); 
+plot(Dinterval,Xee,'bo',Dopt,XeeProdmax,'kx');
+xgrid; xtitle('FERM-2a','','Xee');
 
-subplot(222); 
-plot(Dtest,See,'ro',Dopt,SeeProdmax,'x');
-xgrid; xtitle('FERM-2a','D','See');
+subplot(412); 
+plot(Dinterval,See,'go',Dopt,SeeProdmax,'kx');
+xgrid; xtitle('','','See');
 
-subplot(223); 
-plot(Dtest,Pee,'ro',Dopt,PeeProdmax,'x');
-xgrid; xtitle('FERM-2a','D','Pee');
+subplot(413); 
+plot(Dinterval,Pee,'ro',Dopt,PeeProdmax,'kx');
+xgrid; xtitle('','','Pee');
 
-subplot(224); 
-plot(Dtest,Prod,'ro',Dopt,Prodmax,'x');
-xgrid; xtitle('FERM-2a','D','Prod');
+subplot(414); 
+plot(Dinterval,Prod,'co',Dopt,Prodmax,'kx');
+xgrid; xtitle('','D','Prod');
