@@ -26,25 +26,26 @@ function dxdt = f(t,x)
 endfunction
 
 // CONSTANTES
+V = 1; // L
+F = 0.25; // L/h
+D = F/V // h-1
 S0 = 5; // g/L
-D = 0.25; // h-1
 mumax = 0.53 // h-1
 KS = 0.12; // g/L
 Y = 0.5; // ad
 KI = 2.2; // g/L
 
 // CAMPO VECTORIAL
-Xmin = 0; dX = 0.25; Xmax = 3; // g/L 
-Smin = 0; dS = 0.50; Smax = 6; // g/L 
-
-fchamp(f,0,Xmin:dX:Xmax,Smin:dS:Smax);
-a = gca(); a.data_bounds = [Xmin Xmax Smin Smax];
-
+Xmin = 0; dX = 0.10; Xmax = 3; // g/L 
+Smin = 0; dS = 0.25; Smax = 6; // g/L 
+scf(1); fchamp(f,0,Xmin:dX:Xmax,Smin:dS:Smax);
 
 // CONDICIONES INICIALES
-Xini = 0.0; Sini = 0.0; // g/L
+Xini = 0; // g/L 
+Sini = 0; // g/L
+// Sini = 0 => Separatriz: 0.82 < Xini < 0.83 
+// Sini = 6 => Separatriz: 2.33 < Xini < 2.34 
 xini = [Xini;Sini];
-// xini = locate(1)
 
 // TIEMPO
 tfin = 1000; dt = 0.1; t = 0:dt:tfin; // h
@@ -54,7 +55,6 @@ x = ode(xini,0,t,f);
 X = x(1,:); Xee = X($)
 S = x(2,:); See = S($)
 
-// TRAYECTORIA
-plot(X,S,'o');
-a = gca(); 
-a.data_bounds = [Xmin Xmax Smin Smax];
+// GRÁFICAS
+scf(1); plot(X,S,'o-');
+a = gca; a.data_bounds = [Xmin,Smin;Xmax,Smax];

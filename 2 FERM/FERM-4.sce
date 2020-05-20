@@ -53,15 +53,6 @@ x = ode(xini,0,t,f);
 V  = x(1,:); Vfin  = V($)
 VX = x(2,:); VXfin = VX($)
 VS = x(3,:); VSfin = VS($)
-S = VS./V;
-
-// S óptima => dmudS = d(mu*S/(KS+S+S^2/KI)) = 0 
-// KS+S+S^2/KI - S*(1+2*S/KI) = 0 
-// KS - S^2/KI = 0
-Sopt = sqrt(KS*KI) 
-
-indexSopt = find(S>Sopt);
-tSopt = dt*length(indexSopt)
 
 // GRÁFICAS
 scf(1); clf(1); 
@@ -71,6 +62,16 @@ xgrid; xtitle('FERM-4','t','V')
 scf(2); clf(2);
 plot(t,VX,t,VS)
 xgrid; xtitle('FERM-4','t','VX(azul), VS(verde)')
+
+// S óptima 
+// dmudS = d(mu*S/(KS+S+S^2/KI)) = 0 
+// KS+S+S^2/KI - S*(1+2*S/KI) = 0 
+// KS - S^2/KI = 0
+Sopt = sqrt(KS*KI) 
+
+S = VS./V;
+indexSopt = find(S>Sopt);
+tSopt = dt*length(indexSopt)
 
 scf(3); clf(3);
 plot(t,S,t(indexSopt),S(indexSopt),'go');

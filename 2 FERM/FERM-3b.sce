@@ -25,70 +25,41 @@ function dxdt = f(x)
     dxdt(2) = dSdt
 endfunction
 
-
 // CONSTANTES
+V = 1; // L
+F = 0.25; // L/h
+D = F/V // h-1
 S0 = 5; // g/L
-D = 0.25; // h-1
 mumax = 0.53 // h-1
 KS = 0.12; // g/L
 Y = 0.5; // ad
 KI = 2.2; // g/L
 
 // SOLUCIÓN SUPUESTA
-// Xeeguess = 0.5; Seeguess = 0.5; // g/L; CONVERGE AL EE1
- Xeeguess = 1.5; Seeguess = 2.0; // g/L; CONVERGE AL EE2
-// Xeeguess = 1.0; Seeguess = 0.1; // g/L; CONVERGE AL EE3
-
+Xeeguess = 0;   Seeguess = 5;   // xee = [0   ;5  ]  // g/L
+//Xeeguess = 1.5; Seeguess = 2.5; // xee = [1.32;2.35] // g/L
+//Xeeguess = 2.5; Seeguess = 0.1; // xee = [2.44;0.11] // g/L
 xeeguess = [Xeeguess; Seeguess];
-
-
+   
 // RESOLVER
 [xee,v,info] = fsolve(xeeguess, f)
 Xee = xee(1)
 See = xee(2)
 
 // GRÁFICAS
-plot(Xee,See,'x');
-Xmin = 0; Xmax = 3; // g/L 
-Smin = 0; Smax = 6; // g/L
-a = gca(); a.data_bounds = [Xmin Xmax Smin Smax];
-//a.tight_limits = 'on';
+scf(1); plot(Xee,See,'ro');
 
 // ESTABILIDAD DE LOS ESTADOS ESTACIONARIOS
-
-// Sistema no lineal
-// dxdt = f(x)
-// dCAdt = f1(X,S)
-// dTdt  = f2(X,S)
-
-// Linealización alrededor del estado estacionario
-//  f1(Xee,See) = 0
-//  f2(Xee,See) = 0 
-
-// Desarrollo en serie de Taylor
-//  dXdt = f1(Xee,See) + df1dXee*(X-Xee) + df1dSee*(S-See)
-//  dSdt = f2(Xee,See) + df2dXee*(S-See) + df2dSee*(S-See)
-
-// Variables de desviación
-// Xd = X - Xee  => dXddt = dXdt
-// Sd = S - See  => dSddt = dSdt
-
-// Sistema lineal
-// dXddt = df1dXee*Xd + df1dSee*Sd
-// dXddt = df2dXee*Xd + df2dSee*Sd
-// dxddt = A*xd
-
-// Jacobiano
-// A = [df1dCAee  df1dTee
-//      df2dCAee  df2dTee] 
-
-// A = numderivative(f,xee)  // Jacobiano
+// Derivadas parciales
 h = 1E-6;
 dfdXee = (f([Xee+h;See]) - f([Xee;See]))/h
 dfdSee = (f([Xee;See+h]) - f([Xee;See]))/h
 
-A = [dfdXee dfdSee]
+// Matriz jacobiana
+J = [dfdXee,dfdSee]
 
+// Valores propios
+lambda = spec(J)
 
-lambda = spec(A)  // Valores propios
+// Criterio de estabilidad
 Estable = real(lambda) < 0
