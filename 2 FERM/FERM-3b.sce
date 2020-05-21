@@ -3,7 +3,7 @@ clear; clc;
 // FERMENTADOR CONTINUO CON INHIBICIÓN POR SUSTRATO
 // Estados estacionarios
 
-// SISTEMA DE ECUACIONES DIFERENCIALES
+// SISTEMA DE ECUACIONES ALGEBRAICAS
 function dxdt = f(x)
     // Variables diferenciales
     X = x(1)
