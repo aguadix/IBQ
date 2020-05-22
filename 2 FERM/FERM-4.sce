@@ -1,6 +1,7 @@
 clear; clc;
 // FERM-4.sce
 // FERMENTADOR SEMICONTINUO CON INHIBICIÓN POR SUSTRATO
+// Dinámica
 
 // SISTEMA DE ECUACIONES DIFERENCIALES
 function dxdt = f(t,x)
@@ -92,4 +93,4 @@ S0opt = S0test(indexVXfinmax)
 
 scf(4); clf(4);  
 plot(S0test,VXfin,'ro',S0opt,VXfinmax,'x')
-xgrid; xtitle('FERM-04','S0','VXfin')
+xgrid; xtitle('FERM-4','S0','VXfin')
