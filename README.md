@@ -1,5 +1,5 @@
 # IBQ
-Ingeniería Bioquímica
+Ingeniería Bioquímica.
 
 [Grado en Ingeniería Química](http://grados.ugr.es/iquimica/)
 
